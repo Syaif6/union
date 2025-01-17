@@ -108,8 +108,9 @@ impl IbcClient for ArbitrumLightClient {
     fn verify_creation(
         _client_state: &Self::ClientState,
         _consensus_state: &Self::ConsensusState,
-    ) -> Result<(), ibc_union_light_client::IbcClientError<Self>> {
-        Ok(())
+    ) -> Result<Option<Vec<ibc_union_msg::lightclient::Event>>, IbcClientError<ArbitrumLightClient>>
+    {
+        Ok(None)
     }
 
     fn get_timestamp(consensus_state: &Self::ConsensusState) -> u64 {

@@ -96,8 +96,9 @@ impl ibc_union_light_client::IbcClient for EthereumLightClient {
     fn verify_creation(
         _client_state: &Self::ClientState,
         _consensus_state: &Self::ConsensusState,
-    ) -> Result<(), IbcClientError<Self>> {
-        Ok(())
+    ) -> Result<Option<Vec<ibc_union_msg::lightclient::Event>>, IbcClientError<EthereumLightClient>>
+    {
+        Ok(None)
     }
 
     fn verify_header(

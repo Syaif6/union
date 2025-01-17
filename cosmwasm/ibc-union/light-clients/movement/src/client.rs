@@ -1,4 +1,5 @@
 use cosmwasm_std::Empty;
+use ibc_union_light_client::IbcClientError;
 use ibc_union_msg::lightclient::Status;
 use movement_light_client_types::{
     client_state::ClientState, consensus_state::ConsensusState, header::Header,
@@ -91,8 +92,9 @@ impl ibc_union_light_client::IbcClient for MovementLightClient {
     fn verify_creation(
         _client_state: &Self::ClientState,
         _consensus_state: &Self::ConsensusState,
-    ) -> Result<(), ibc_union_light_client::IbcClientError<Self>> {
-        Ok(())
+    ) -> Result<Option<Vec<ibc_union_msg::lightclient::Event>>, IbcClientError<MovementLightClient>>
+    {
+        Ok(None)
     }
 
     fn verify_header(
